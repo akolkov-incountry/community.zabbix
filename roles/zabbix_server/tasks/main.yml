@@ -27,14 +27,14 @@
   tags:
     - always
 
-- name: Install Repository
-  ansible.builtin.include_role:
-    name: community.zabbix.zabbix_repo
-  vars:
-    zabbix_repo_apt_priority: "{{ zabbix_server_apt_priority | default (omit) }}"
-    zabbix_repo_version: "{{ zabbix_server_version }}"
-    zabbix_repo_package: "zabbix_server-{{ zabbix_proxy_database }}"
-  when: zabbix_manage_repo | default(true)
+# - name: Install Repository
+#   ansible.builtin.include_role:
+#     name: community.zabbix.zabbix_repo
+#   vars:
+#     zabbix_repo_apt_priority: "{{ zabbix_server_apt_priority | default (omit) }}"
+#     zabbix_repo_version: "{{ zabbix_server_version }}"
+#     zabbix_repo_package: "zabbix_server-{{ zabbix_proxy_database }}"
+#   when: zabbix_manage_repo | default(true)
 
 - name: "Configure SELinux when enabled"
   ansible.builtin.include_tasks: selinux.yml
